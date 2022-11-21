@@ -1,0 +1,208 @@
+#include <iostream>
+using namespace std;
+
+struct node{
+	int data;
+	struct node* next = NULL;
+};
+
+void Push(struct node** headRef,int data){
+	struct node* newNode = new struct node;
+	newNode->data = data;
+	newNode->next = *headRef;
+	*headRef = newNode;
+}
+
+void Print(struct node* head){
+	struct node* current = head;
+	while(current != NULL){
+		cout << current->data << endl;
+		current = current->next;
+	}
+}
+
+void PrintRecursive(struct node* head){
+	if(head == NULL) return;
+	cout << head->data << endl;
+	PrintRecursive(head->next);
+}
+
+int Length(struct node* head){
+	int counter = 0;
+	struct node* current = head;
+	while(current != NULL){
+		counter++;
+		current = current->next;
+	}
+	return(counter);
+}
+
+
+void AddToEnd(struct node** headRef,int dataValue){
+	struct node* current = *headRef;
+	if(current == NULL){
+		Push(headRef, dataValue);
+	}else{
+		while(current->next != NULL){
+			current = current->next;
+		}
+		Push(&(current->next), dataValue);
+	}
+}
+
+void AddToEndv2(struct node** headRef,int dataValue){
+	struct node* newNode = new struct node;
+	newNode->data = dataValue;
+	newNode->next = NULL;
+	if(*headRef == NULL){ //list is empty
+		*headRef = newNode;
+	}else{
+		struct node* current = *headRef;
+		while(current->next != NULL){
+			current = current->next;
+		}
+		current->next = newNode;
+	}
+}
+
+struct node* FindKthLast(struct node* head, int k){
+	int count = 0;
+	int iterate = 0;
+	struct node* current = head;
+	while(current != NULL){
+		current = current->next;
+		count ++;
+	}
+	iterate = count - k;
+	current = head;
+	while(iterate > 0){
+		current = current->next;
+		iterate--;
+	}
+	return current;
+}
+
+struct node* FindKthLastPointers(struct node* head, int k){
+	struct node* current = head;
+	struct node* runner = head;
+	while(k>0 && runner != NULL){
+		runner = runner->next;
+		k--;
+	}
+	if(k > 0) {
+		return NULL;
+	}
+	while(runner != NULL){
+		runner = runner->next;
+		current = current->next;
+	}
+	return current;
+}
+
+
+void InsertSorted(struct node** headRef,int dataValue){
+	struct node* newNode = new struct node;
+	newNode->data = dataValue;
+	struct node* current = *headRef;
+	if(current == NULL){
+		newNode->next = NULL;
+		*headRef = newNode;
+	}else{
+		while( (current->next != NULL) && (newNode->data > current->next->data) ){
+			current = current->next;
+		}
+		if((*headRef)->data > newNode->data){
+			newNode->next = current;
+			*headRef = newNode;
+		}else{
+			newNode->next = current->next;
+			current->next = newNode;
+		}
+	}
+}
+
+bool RemoveDuplicatesSorted(struct node* head){
+	struct node* current = head;
+	if (current == NULL) return false;
+
+	while(current->next != NULL) {
+		if (current->data == current->next->data) {
+			struct node* nextNext = current->next->next;
+			free(current->next);
+			current->next = nextNext;
+		}
+		else {
+			current = current->next;
+		}
+	}
+}
+
+bool IsPalindrome(struct node* head){
+	struct node* temp = head;
+
+	stack<int> s;
+
+	while (temp != NULL) {
+		s.push(temp->data);
+		temp = temp->ptr;
+	}
+
+	while (head != NULL) {
+		int i = s.top();
+		s.pop();
+
+		if (head->data != i) {
+			return false;
+		}
+
+		head = head->ptr;
+	}
+
+	return true;
+}
+
+//struct node* MergeTwoSorted(struct node* head1, struct node* head2){
+
+//}
+
+void Reverse(struct node** headRef){
+	struct node *next = NULL;
+	struct node *prev = NULL;
+	struct node *current = (*headRef);
+
+	while (current != NULL){
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	(*headRef) = prev;
+}
+
+
+//void OddEvenRearrange(struct node** headRef){
+
+//}
+
+int main() {
+
+	//struct node* head = NULL;
+	//AddToEndv2(&head, 50);
+	//AddToEndv2(&head, 50);
+	//AddToEndv2(&head, 60);
+	//AddToEndv2(&head, 70);
+	//AddToEndv2(&head, 80);
+	//AddToEndv2(&head, 90);
+	//Print(head);
+	//cout << "\n";
+	//Reverse(&head);
+	//Print(head);
+	//cout << "\n";
+	//RemoveDuplicatesSorted(head);
+	//Print(head);
+	struct node* palin = NULL;
+	AddToEndv2(&head, 10);
+AddToEndv2(&head, 10);
+	
+	return 0;
+}
