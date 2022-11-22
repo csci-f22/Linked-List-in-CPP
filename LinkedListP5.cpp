@@ -246,12 +246,12 @@ void OddEvenRearrange(struct node** headRef){
 int main() {
 
 	struct node* head = NULL;
-	InsertSorted(&head, 50);
-	InsertSorted(&head, 50);
-	InsertSorted(&head, 60);
-	InsertSorted(&head, 70);
-	InsertSorted(&head, 80);
-	InsertSorted(&head, 90);
+	AddToEndv2(&head, 50);
+	AddToEndv2(&head, 50);
+	AddToEndv2(&head, 60);
+	AddToEndv2(&head, 70);
+	AddToEndv2(&head, 80);
+	AddToEndv2(&head, 90);
 
 	Print(head);
 	cout << endl;
@@ -262,13 +262,14 @@ int main() {
 	Reverse(&head);
 	Print(head);
 	cout << endl;
+	Reverse(&head);
 
 	struct node* palin = NULL;
-	InsertSorted(&palin, 20);
-	InsertSorted(&palin, 10);
-	InsertSorted(&palin, 30);
-	InsertSorted(&palin, 10);
-	InsertSorted(&palin, 20);
+	AddToEndv2(&palin, 20);
+	AddToEndv2(&palin, 10);
+	AddToEndv2(&palin, 30);
+	AddToEndv2(&palin, 10);
+	AddToEndv2(&palin, 20);
 	int result = IsPalindrome(palin);
 
 	if (result == 1)
@@ -278,20 +279,20 @@ int main() {
 	cout << endl;
 
 	struct node* head1 = NULL;
-	InsertSorted(&head1, 20);
-	InsertSorted(&head1, 30);
-	InsertSorted(&head1, 40);
-	InsertSorted(&head1, 50);
-	InsertSorted(&head1, 60);
+	AddToEndv2(&head1, 20);
+	AddToEndv2(&head1, 30);
+	AddToEndv2(&head1, 40);
+	AddToEndv2(&head1, 50);
+	AddToEndv2(&head1, 60);
 	cout << MergeTwoSorted(head, head1);
 	cout << endl;
 
 	struct node* oe = NULL;
-	InsertSorted(&oe, 2);
-	InsertSorted(&oe, 3);
-	InsertSorted(&oe, 4);
-	InsertSorted(&oe, 5);
-	InsertSorted(&oe, 9);
+	AddToEndv2(&oe, 2);
+	AddToEndv2(&oe, 3);
+	AddToEndv2(&oe, 4);
+	AddToEndv2(&oe, 5);
+	AddToEndv2(&oe, 9);
 	OddEvenRearrange(&oe);
 	Print(oe);
 
